@@ -1,6 +1,4 @@
 from flask import Flask,render_template,request,session,redirect
-from flask_restful import Api,Resource
-from flask_cors import CORS,cross_origin
 import sqlite3
 from datetime import datetime
 
