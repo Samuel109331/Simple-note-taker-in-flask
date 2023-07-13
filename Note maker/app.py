@@ -1,4 +1,6 @@
 from flask import Flask,render_template,request,session,redirect
+# from flask_restful import Api,Resource
+# from flask_cors import CORS,cross_origin
 import sqlite3
 from datetime import datetime
 
@@ -150,6 +152,11 @@ def changeDP():
         image_path = f"static/dp/{username[0][0].replace(' ','')}.jpg"
         editProfile(session['email'],image_path)
         return "<script>alert('Profile picture uploaded successfully!');window.location.href='/';</script>"
+
+#for mobile devices
+@app.route("/mobileapp")
+def mobApp():
+    return render_template("mobile_app.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
