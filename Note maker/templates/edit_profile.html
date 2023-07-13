@@ -1,0 +1,17 @@
+{% extends 'home.html' %}
+{% block title %}
+Edit your profile
+{% endblock %}
+
+{% block content %}
+<form action="/saveinfo" method="post" enctype="multipart/form-data">
+<table>
+        <td><label>Profile picture </label></td>
+        <td><input type="file" name="dp" accept=".jpg"></td>
+    </tr>
+    <tr>
+        <td><button type="submit">Save changes</button></td>
+    </tr>
+</table>
+</form>
+{% endblock %}

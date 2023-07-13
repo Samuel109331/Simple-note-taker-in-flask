@@ -1,0 +1,16 @@
+{% extends 'home.html' %}
+{% block title %}
+welcome {{ fname }}
+{% endblock %}
+
+{% block content %}
+<div>
+<img src="{{ pp }}" alt="profilepic" width="100" height="100">
+<p><a href="/editdp">Edit your profile picture here</a></p>
+<p>Full name {{ fname }}</p>
+<p>Email {{ email }}</p>
+<p><a href="/createnote">Create a note</a></p>
+<p><a href="/viewnote">View your notes</a></p>
+<p><a href="/logout">Log out</a></p>
+</div>
+{% endblock %}
