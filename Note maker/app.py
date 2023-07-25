@@ -1,6 +1,5 @@
 from flask import Flask,render_template,request,session,redirect
-# from flask_restful import Api,Resource
-# from flask_cors import CORS,cross_origin
+from restApi import *
 import sqlite3
 from datetime import datetime
 
@@ -63,6 +62,18 @@ def returnName(email_id):
 
     return datas
 app = Flask(__name__)
+api = Api(app)
+
+class CurrentSession(Resource):
+    def get(self):
+        return {"session":session['email']}
+
+api.add_resource(deleteNotes,'/api/deletenote/<string:note>/<string:username>')
+api.add_resource(CurrentSession,'/api/currentlogin')
+api.add_resource(editNotes,'/api/editnote/<string:note>/<string:username>/<string:newnote>')
+api.add_resource(DeleteAll,'/api/deleteall/<string:username>')
+
+
 app.secret_key = "SAM9644"
 @app.route("/")
 def home_page():
