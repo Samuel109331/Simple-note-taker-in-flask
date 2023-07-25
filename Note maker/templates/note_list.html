@@ -6,8 +6,9 @@ My notes
 {% block content %}
 <h1>My notes list</h1>
 <ol>
+    <button onclick="deleteAllNotes()">Delete all</button>
     {% for note in notes %}
-        <li>{{note[0]}}</li>
+        <li>{{note[0]}}</li><button onclick="deleteNote('{{ note[0] }}')">delete</button>&nbsp;&nbsp;<button onclick="editNote('{{ note[0] }}')">Edit</button>
     {% endfor %}
 </ol>
 {% endblock %}
