@@ -111,6 +111,40 @@ if (detectDevice()) {
     window.location.href="/mobileapp";
 }
 
+async function getSession() {
+    const response = await fetch('/api/currentlogin');
+    const data = await response.json();
+    return data["session"];
+  }
+  
+  async function editNote(note) {
+    const session = await getSession();
+    const newnote = await prompt("Enter new note")
+    const response = await fetch(`/api/editnote/${note}/${session}/${newnote}`);
+    const data = await response.json();
+    alert(data.message)
+    location.reload();
+  }
+  async function deleteNote(note) {
+    const session = await getSession();
+    if (confirm("Are you sure you want to delete your note")) {
+        
+    const response = await fetch(`/api/deletenote/${encodeURI(note)}/${session}`);
+    const data = await response.json();
+    alert(data.message)
+    location.reload();
+    }
+  }
+  async function deleteAllNotes() {
+    const session = await getSession();
+    if (confirm("Are you sure you want to delete all of your notes")) {
+        
+    const response = await fetch(`/api/deleteall/${session}`);
+    const data = await response.json();
+    alert(data.message)
+    location.reload();
+    }
+  }
    </script>
 </body>
 </html>
